@@ -31,8 +31,19 @@ class User < ApplicationRecord
   # cohki0305@gmail.com
 
   def display_name
-    self.email.split('@').first
-    # => ['cohki0305' , 'gmail.com']
+
+    profile&.nickname || self.email.split('@').first
   end
 
+  def birthday
+    profile&.birthday
+  end
+
+  def gender
+    profile&.gender
+  end
+
+  def prepare_profile
+    profile || build_profile
+  end
 end
