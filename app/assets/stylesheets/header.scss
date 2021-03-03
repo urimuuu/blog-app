@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 $avatar-size: 40px;
 $header-padding-y: 16px;
@@ -20,7 +20,6 @@ $back-icon-size: 16px;
     color: $primary-color;
   }
 
-
   &_logos {
     min-width: 0;
     display: flex;
@@ -32,8 +31,6 @@ $back-icon-size: 16px;
       margin: ($avatar-size - $back-icon-size) / 2 8px 0;
     }
   }
-
-
 
   &_pageTitle {
     color: white;
