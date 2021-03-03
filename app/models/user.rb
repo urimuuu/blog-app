@@ -23,7 +23,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :articles, dependent: :destroy
+  has_one :profile,dependent: :destroy
 
+  delegate :birthday, :age, :gender, to: :profile, allow_nil: true
+  
   def has_written?(article)
     articles.exists?(id: article.id)
   end
@@ -31,8 +34,27 @@ class User < ApplicationRecord
   # cohki0305@gmail.com
 
   def display_name
-    self.email.split('@').first
-    # => ['cohki0305' , 'gmail.com']
+
+    profile&.nickname || self.email.split('@').first
   end
 
+  # def birthday
+  #   profile&.birthday
+  # end
+
+  # def gender
+  #   profile&.gender
+  # end
+
+  def prepare_profile
+    profile || build_profile
+  end
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
 end
