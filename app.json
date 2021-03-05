@@ -4,7 +4,7 @@
   "description": "This is blogapp",
   "keywords": [],
   "website": "",
-  "repository": "https://github.com/urimuuu/blogapp",
+  "repository": "https://github.com/urimuuu/blog-app",
   "env": {},
   "addons": [
     "heroku-postgresql:hobby-dev"
